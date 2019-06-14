@@ -1,5 +1,5 @@
 {
-  "main": "src/main.js",
+  "main": "src/main.R.js",
   "version": "0.0.1",
   "scripts": {
     "test": "jest",
@@ -45,6 +45,8 @@
     "rollup": "^1.15.3"
   },
   "dependencies": {
-    "ramda": "^0.26.1"
+    "ramda": "^0.26.1",
+    "stack-trace": "0.0.10",
+    "stacktrace-js": "^2.0.0"
   }
 }

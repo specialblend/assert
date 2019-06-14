@@ -1,4 +1,4 @@
-const assert = require('./main');
+const assert = require('./main.R');
 const testArgs = ['hello', 12.34, false, null];
 const expectedArgsString = '\'hello\', 12.34, false, null';
 const assertMessage = 'test assert message';
@@ -22,21 +22,23 @@ describe('assert', () => {
     describe('when called', () => {
         describe('from named function', () => {
             test('throws traced error', () => {
-                expect.assertions(1);
+                expect.assertions(2);
                 try {
                     fooNamedFunction(...testArgs);
                 } catch (err) {
-                    expect(err.message).toMatch(`${assertMessage} at call: fooNamedFunction(${expectedArgsString})`);
+                    expect(err.message).toMatch(assertMessage);
+                    expect(err.stack).toMatch(`at fooNamedFunction(${expectedArgsString})`);
                 }
             });
         });
         describe('from named const function', () => {
             test('throws traced error', () => {
-                expect.assertions(1);
+                expect.assertions(2);
                 try {
                     fooConstNamedFunction(...testArgs);
                 } catch (err) {
-                    expect(err.message).toMatch(`${assertMessage} at call: fooConstNamedFunction(${expectedArgsString})`);
+                    expect(err.message).toMatch(assertMessage);
+                    expect(err.stack).toMatch(`at fooConstNamedFunction(${expectedArgsString})`);
                 }
             });
         });
