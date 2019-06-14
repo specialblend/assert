@@ -1,21 +1,21 @@
+const R = require('ramda');
 const assert = require('assert');
-const { compose, join, map, values, path } = require('ramda');
+const { compose, join, map, path, values } = R;
 const { inspect } = require('util');
 
 const formatArgs = compose(join(', '), map(inspect), values);
 const formatCaller = ({ name, arguments: argv }) => `${name}(${formatArgs(argv)})`;
 const formatMessage = (message, trace) => `${message} at call: ${trace}`;
 
+const traceCaller = R.compose(formatCaller, path(['callee', 'caller']));
+
 module.exports = function(expression, message) {
+    let caller = null;
     try {
-        const caller = path(['callee', 'caller'], arguments);
-        const trace = formatCaller(caller);
-        const payload = formatMessage(message, trace);
-        return assert(expression, payload);
+        caller = traceCaller(arguments);
     } catch (err) {
-        if (err instanceof TypeError && err.message === '\'caller\', \'callee\', and \'arguments\' properties may not be accessed on strict mode functions or the arguments objects for calls to them') {
-            return assert(expression, message);
-        }
-        throw err;
+        return assert(expression, message);
     }
+    const payload = formatMessage(message, caller);
+    return assert(expression, payload);
 };
