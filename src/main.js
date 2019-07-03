@@ -2,7 +2,7 @@ const R = require('ramda');
 const assert = require('assert');
 const util = require('util');
 
-const { join, insert, split, map, compose, converge, always, tryCatch, path, concat, curry, prop } = R;
+const { join, insert, split, map, compose, converge, always, tap, tryCatch, path, concat, curry, prop } = R;
 
 /**
  * Reconstruct caller function arguments
@@ -50,6 +50,7 @@ const injectCaller = curry(
         compose(
             join('\n'),
             insert(1, formatStackTraceLine(message)),
+            tap(console.log),
             split('\n')
         )(stack)
 );
