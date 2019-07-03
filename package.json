@@ -21,7 +21,7 @@
   "keywords": [
     "node",
     "assert",
-    "race"
+    "trace"
   ],
   "author": "cj@specialblend.net",
   "license": "ISC",

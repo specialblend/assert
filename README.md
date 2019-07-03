@@ -37,4 +37,4 @@ AssertionError [ERR_ASSERTION]: they say it dont be like it is, but it do!
 ## Javascript Language Limitations
 
 1. Cannot trace arrow functions
-2. Undesirable behavior under strict mode (`use strict`)
+2. Unexpected behavior under strict mode (`use strict`)
