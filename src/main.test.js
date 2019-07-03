@@ -1,4 +1,4 @@
-const assert = require('./main.R');
+const assert = require('./main');
 const testArgs = ['hello', 12.34, false, null];
 const expectedArgsString = '\'hello\', 12.34, false, null';
 const assertMessage = 'test assert message';
