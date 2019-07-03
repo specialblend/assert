@@ -1,6 +1,6 @@
 {
-  "main": "src/main.R.js",
-  "version": "0.0.1",
+  "main": "src/main.js",
+  "version": "0.0.2",
   "scripts": {
     "test": "jest",
     "coverage": "jest --coverage",

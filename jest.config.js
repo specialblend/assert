@@ -17,6 +17,7 @@ module.exports = {
         '<rootDir>/coverage/',
         '<rootDir>/jest.config.js',
         '<rootDir>/rollup.config.js',
+        'example.js',
     ],
     globalSetup: './__mocks__/environment.js',
     setupFilesAfterEnv: ['./__mocks__/support.js'],
